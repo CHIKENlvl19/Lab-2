@@ -1,0 +1,20 @@
+rods = 0
+rings = gets.chomp
+
+(0..9).each do |i|
+  w = false
+  r = false
+  b = false
+
+  rings.chars.each_with_index do |ring, j|
+    if ring.to_i == i
+      w = true if rings[j - 1] == 'W'
+      r = true if rings[j - 1] == 'R'
+      b = true if rings[j - 1] == 'B'
+    end
+  end
+
+  rods += 1 if w && r && b
+end
+
+puts  rods

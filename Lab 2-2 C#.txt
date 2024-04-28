@@ -1,0 +1,31 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int rods = 0;
+        string rings = Console.ReadLine();
+
+        for (int i = 0; i < 10; i++)
+        {
+            bool W = false, R = false, B = false;
+            for (int j = 0; j < rings.Length; j++)
+            {
+                if (rings[j] - '0' == i)
+                {
+                    if (j > 0 && rings[j - 1] == 'W')
+                        W = true;
+                    if (j > 0 && rings[j - 1] == 'R')
+                        R = true;
+                    if (j > 0 && rings[j - 1] == 'B')
+                        B = true;
+                }
+            }
+            if (W && R && B)
+                rods++;
+        }
+
+        Console.WriteLine(rods);
+    }
+}

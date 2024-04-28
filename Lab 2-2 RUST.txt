@@ -1,0 +1,33 @@
+use std::io;
+
+fn main() {
+    let mut rods = 0;
+    let mut rings = String::new();
+    io::stdin().read_line(&mut rings).expect("Failed to read line");
+
+    for i in 0..10 {
+        let mut W = false;
+        let mut R = false;
+        let mut B = false;
+
+        for j in 0..rings.len() {
+            if rings.chars().nth(j).unwrap() as i32 - '0' as i32 == i {
+                if rings.chars().nth(j - 1).unwrap() == 'W' {
+                    W = true;
+                }
+                if rings.chars().nth(j - 1).unwrap() == 'R' {
+                    R = true;
+                }
+                if rings.chars().nth(j - 1).unwrap() == 'B' {
+                    B = true;
+                }
+            }
+        }
+
+        if W && R && B {
+            rods += 1;
+        }
+    }
+
+    println!("{}", rods);
+}

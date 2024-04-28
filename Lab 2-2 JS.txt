@@ -1,0 +1,20 @@
+let rods = 0;
+let rings = prompt("Enter rings: ");
+
+for (let i = 0; i < 10; i++) {
+    let W = false, R = false, B = false;
+    for (let j = 0; j < rings.length; j++) {
+        if (parseInt(rings[j]) === i) {
+            if (rings[j - 1] === 'W') 
+                W = true;
+            if (rings[j - 1] === 'R') 
+                R = true;
+            if (rings[j - 1] === 'B') 
+                B = true;
+        }
+    }
+    if (W && R && B) 
+        rods++;
+}
+
+console.log(rods);

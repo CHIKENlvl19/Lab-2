@@ -1,0 +1,30 @@
+fun main() {
+    var rods = 0
+    val rings = readLine()!!
+    
+    for (i in 0 until 10) {
+        var W = false
+        var R = false
+        var B = false
+        
+        for (j in rings.indices) {
+            if (rings[j] - '0' == i) {
+                if (rings[j - 1] == 'W') {
+                    W = true
+                }
+                if (rings[j - 1] == 'R') {
+                    R = true
+                }
+                if (rings[j - 1] == 'B') {
+                    B = true
+                }
+            }
+        }
+        
+        if (W && R && B) {
+            rods++
+        }
+    }
+    
+    println(rods)
+}
