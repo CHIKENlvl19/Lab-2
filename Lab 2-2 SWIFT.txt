@@ -1,0 +1,25 @@
+import Foundation
+
+var rods = 0
+if let rings = readLine() {
+    for i in 0..<10 {
+        var W = false, R = false, B = false
+        for j in 0..<rings.count {
+            if rings[rings.index(rings.startIndex, offsetBy: j)] == Character(String(i)) {
+                if rings[rings.index(rings.startIndex, offsetBy: j - 1)] == "W" {
+                    W = true
+                }
+                if rings[rings.index(rings.startIndex, offsetBy: j - 1)] == "R" {
+                    R = true
+                }
+                if rings[rings.index(rings.startIndex, offsetBy: j - 1)] == "B" {
+                    B = true
+                }
+            }
+        }
+        if W && R && B {
+            rods += 1
+        }
+    }
+    print(rods)
+}

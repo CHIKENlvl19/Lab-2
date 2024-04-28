@@ -1,0 +1,33 @@
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	rods := 0
+	var rings string
+	fmt.Scanln(&rings)
+
+	for i := 0; i < 10; i++ {
+		W, R, B := false, false, false
+		for j := 0; j < len(rings); j++ {
+			if rings[j]-'0' == byte(i) {
+				if rings[j-1] == 'W' {
+					W = true
+				}
+				if rings[j-1] == 'R' {
+					R = true
+				}
+				if rings[j-1] == 'B' {
+					B = true
+				}
+			}
+		}
+		if W && R && B {
+			rods++
+		}
+	}
+
+	fmt.Println(rods)
+}

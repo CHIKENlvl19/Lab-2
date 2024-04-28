@@ -1,0 +1,27 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int rods = 0;
+        Scanner scanner = new Scanner(System.in);
+        String rings = scanner.nextLine();
+
+        for (int i = 0; i < 10; i++) {
+            boolean W = false, R = false, B = false;
+            for (int j = 0; j < rings.length(); j++) {
+                if (rings.charAt(j) - '0' == i) {
+                    if (j > 0 && rings.charAt(j - 1) == 'W')
+                        W = true;
+                    if (j > 0 && rings.charAt(j - 1) == 'R')
+                        R = true;
+                    if (j > 0 && rings.charAt(j - 1) == 'B')
+                        B = true;
+                }
+            }
+            if (W && R && B)
+                rods++;
+        }
+
+        System.out.println(rods);
+    }
+}
