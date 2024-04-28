@@ -1,0 +1,52 @@
+using System;
+
+public class Program
+{
+    public static bool IsPrime(int N)
+    {
+        if (N <= 1)
+            return false;
+
+        for (int i = 2; i < N / 2; i++)
+        {
+            if (N % i == 0)
+                return false;
+        }
+
+        return true;
+    }
+
+    public static int NearestPrime(int N)
+    {
+        if (IsPrime(N))
+            return N;
+
+        int SmallerPrime = N - 1, BiggerPrime = N + 1;
+
+        while (true)
+        {
+            if (IsPrime(SmallerPrime))
+                return SmallerPrime;
+            else if (IsPrime(BiggerPrime))
+                return BiggerPrime;
+
+            else
+            {
+                SmallerPrime--;
+                BiggerPrime++;
+            }
+        }
+    }
+
+    public static void Main()
+    {
+        int N = Convert.ToInt32(Console.ReadLine());
+
+        N = N - NearestPrime(N);
+
+        if (N < 0)
+            Console.WriteLine(N * -1);
+        else
+            Console.WriteLine(N);
+    }
+}

@@ -1,0 +1,34 @@
+def is_prime(n)
+  return false if n <= 1
+
+  (2..Math.sqrt(n)).each do |i|
+    return false if n % i == 0
+  end
+
+  true
+end
+
+def nearest_prime(n)
+  return n if is_prime(n)
+
+  smaller_prime = n - 1
+  bigger_prime = n + 1
+
+  loop do
+    return smaller_prime if is_prime(smaller_prime)
+    return bigger_prime if is_prime(bigger_prime)
+
+    smaller_prime -= 1
+    bigger_prime += 1
+  end
+end
+
+n = gets.chomp.to_i
+
+n = n - nearest_prime(n)
+
+if n < 0
+  puts n.abs
+else
+  puts n
+end

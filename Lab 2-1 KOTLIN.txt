@@ -1,0 +1,43 @@
+import kotlin.math.sqrt
+
+fun isPrime(N: Int): Boolean {
+    if (N <= 1)
+        return false
+
+    for (i in 2..sqrt(N.toDouble()).toInt()) {
+        if (N % i == 0)
+            return false
+    }
+
+    return true
+}
+
+fun nearestPrime(N: Int): Int {
+    if (isPrime(N))
+        return N
+
+    var smallerPrime = N - 1
+    var biggerPrime = N + 1
+
+    while (true) {
+        if (isPrime(smallerPrime))
+            return smallerPrime
+        else if (isPrime(biggerPrime))
+            return biggerPrime
+        else {
+            smallerPrime--
+            biggerPrime++
+        }
+    }
+}
+
+fun main() {
+    val N = readLine()!!.toInt()
+
+    var result = N - nearestPrime(N)
+
+    if (result < 0)
+        result *= -1
+
+    println(result)
+}
