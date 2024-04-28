@@ -1,0 +1,26 @@
+function SummOfDidigts(number) {
+  let summ = 0;
+
+  while (number !== 0) {
+    let digit = number % 10;
+    if (digit % 3 === 0) {
+      summ += digit;
+    }
+    number = Math.floor(number / 10);
+  }
+  return summ;
+}
+
+function main() {
+  let number, count_numbers, summ = 0;
+  count_numbers = parseInt(prompt("Enter the count of numbers:"));
+
+  for (let i = 0; i < count_numbers; i++) {
+    number = parseInt(prompt("Enter a number:"));
+    summ += SummOfDidigts(number);
+  }
+
+  console.log(summ);
+}
+
+main();

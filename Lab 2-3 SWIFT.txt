@@ -1,0 +1,31 @@
+func sumOfDigits(_ number: Int) -> Int {
+    var sum = 0
+    var num = number
+    
+    while num != 0 {
+        let digit = num % 10
+        if digit % 3 == 0 {
+            sum += digit
+        }
+        num /= 10
+    }
+    
+    return sum
+}
+
+func main() {
+    var number = 0
+    var countNumbers = 0
+    var sum = 0
+    
+    countNumbers = Int(readLine()!)!
+    
+    for _ in 0..<countNumbers {
+        number = Int(readLine()!)!
+        sum += sumOfDigits(number)
+    }
+    
+    print(sum)
+}
+
+main()

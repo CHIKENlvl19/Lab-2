@@ -1,0 +1,29 @@
+fun sumOfDigits(number: Int): Int {
+    var sum = 0
+    var num = number
+
+    while (num != 0) {
+        val digit = num % 10
+        if (digit % 3 == 0) {
+            sum += digit
+        }
+        num /= 10
+    }
+
+    return sum
+}
+
+fun main() {
+    var number: Int
+    var countNumbers: Int
+    var sum = 0
+
+    countNumbers = readLine()!!.toInt()
+
+    for (i in 0 until countNumbers) {
+        number = readLine()!!.toInt()
+        sum += sumOfDigits(number)
+    }
+
+    println(sum)
+}
