@@ -1,0 +1,36 @@
+using System;
+
+namespace SumOfDigits
+{
+    class Program
+    {
+        static int SumOfDigits(int number)
+        {
+            int sum = 0;
+
+            while (number != 0)
+            {
+                int digit = number % 10;
+                if (digit % 3 == 0)
+                    sum += digit;
+                number /= 10;
+            }
+
+            return sum;
+        }
+
+        static void Main(string[] args)
+        {
+            int countNumbers, number, sum = 0;
+            countNumbers = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 0; i < countNumbers; i++)
+            {
+                number = Convert.ToInt32(Console.ReadLine());
+                sum += SumOfDigits(number);
+            }
+
+            Console.WriteLine(sum);
+        }
+    }
+}

@@ -1,0 +1,25 @@
+def summ_of_digits(number)
+  summ = 0
+
+  while number != 0
+    digit = number % 10
+    summ += digit if digit % 3 == 0
+    number /= 10
+  end
+
+  summ
+end
+
+def main
+  count_numbers = gets.chomp.to_i
+  summ = 0
+
+  count_numbers.times do
+    number = gets.chomp.to_i
+    summ += summ_of_digits(number)
+  end
+
+  puts summ
+end
+
+main
